@@ -17,7 +17,8 @@ recognition.onresult = function(event) {
  
     Content += transcript;
     Textbox.val(Content);
-  
+    var msg = new SpeechSynthesisUtterance(Content);
+    window.speechSynthesis.speak(msg);
 };
 
 recognition.onstart = function() { 
