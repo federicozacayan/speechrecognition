@@ -1,6 +1,8 @@
 var SpeechRecognition = window.webkitSpeechRecognition;
-  
+
 var recognition = new SpeechRecognition();
+var myLang = recognition.lang;
+recognition.lang = 'es-ES';
 
 var Textbox = $('#textbox');
 var instructions = $('instructions');
@@ -17,7 +19,8 @@ recognition.onresult = function(event) {
  
     Content += transcript;
     Textbox.val(Content);
-    var msg = new SpeechSynthesisUtterance(Content);
+    var msg = new SpeechSynthesisUtterance(transcript);
+    msg.lang = 'es-ES'
     window.speechSynthesis.speak(msg);
 };
 
